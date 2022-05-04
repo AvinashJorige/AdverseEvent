@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HBI Product Validation</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="#" class="logo logo-1"> <img src="~/Image/logo4.png" alt="" class="responsive-image"></a>
+                <a href="#" class="logo logo-2">
+                    Human Biologicals Institute
+                    <sub class="logo-sub">A Division of Indian Immunologicals Limited</sub>
+                </a>
+                <div class="header-right">
+                    <a class="" href="#">ADVERSE EVENT REPORTING</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Hello - @HttpContext.Current.User.Identity.Name</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/AdverseDetail/Index">Home</a></li>
+                        <li><a href="/Account/ChangePassword">Change Password</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                        @*<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Login</a></li>*@
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+        <br />
+        <div class="container">
+            @RenderBody()
+        </div>
+        <center>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Indian Immunologicals Limited</p>
+            </footer>
+        </center>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/select2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

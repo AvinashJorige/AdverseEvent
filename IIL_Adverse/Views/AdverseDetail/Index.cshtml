@@ -1,0 +1,1358 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/existingUser.css" rel="stylesheet" />
+<link type="text/css" href="~/Uploadify/uploadify.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-horizontal" novalidate autocomplete="off"  enctype="multipart/form-data">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="Basic_Details">Basic Details</span></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Name">Name</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="nameval text-light"></label>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Gender">Gender (at birth)</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="genderval text-light"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Occupation">Occupation</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="occupval text-light"></label>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Age">Age</span>/ <span class="Date_of_birth">Date of birth</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="ageval text-light"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Phone">Phone</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="phoneval text-light"></label>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Email">Email</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="emailval text-light"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Street_Address">Stree Address</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="addressval text-light"></label>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="City">City</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="cityval text-light"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="State_Province_County">State / Province / County</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="stateval text-light"></label>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Country">Country</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="countryval text-light"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2 text-right">
+                                    <label for=""><span class="Postal_Code">Postal Code</span> : </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class="postalval text-light">12234</label>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <label for=""> </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="" class=" text-light"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Details -->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="Other_Details">Other Details</span></div>
+                    <div class="panel-body ">
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-2" for="datetime_vacc"><span class="For_whom">For whom</span> : <span class="text-danger">*</span></label>
+                            <div class="col-sm-2">
+                                <label class="radio-inline"><input type="radio" name="optradio" value="self" checked onclick="javascript:checkRelation(value)"><span class="yourself">Self</span></label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="other" onclick="javascript:checkRelation(value)"><span class="other">Other</span></label>
+                            </div>
+                            <div class="col-sm-8 other-relation">
+                                <label class="radio-inline"><input type="radio" name="optradio" value="WI"><span class="Wife">Wife</span></label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="CH"><span class="Childern">Childern</span></label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="FA"><span class="Father">Father</span></label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="MO"><span class="Mother">Mother</span></label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="BR"><span class="Brother">Brother</span></label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="SI"><span class="Sister">Sister</span></label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="OT"><span class="other">Other</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient Detials  -->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="Additional_information"> Patient Detials</span> </div>
+                    <div class="panel-body ">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Name">Name</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="pName" class="form-control" required oninvalid="this.setCustomValidity('Enter Name.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Phone">Phone</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="pphone" class="form-control" pattern="^((\+91[0-9]{10})|(0[0-9]{10}))$" required oninvalid="this.setCustomValidity('Enter Phone.')" onchange="this.setCustomValidity('')" onkeypress='validate(event)' />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="City">City</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="pcity" class="form-control" required oninvalid="this.setCustomValidity('Enter City.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Postal_Code">Postal Code</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ppostal" class="form-control" required oninvalid="this.setCustomValidity('Enter Postal Code.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Gender">Gender (at birth)</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <!-- <input type="text" id="pGender" class="form-control" required /> -->
+                                        <select name="pGender" id="pGender" class="form-control" required>
+                                            <option value="">-- Select -- </option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Email">Email</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="email" id="pemail" class="form-control" required oninvalid="this.setCustomValidity('Enter Email.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Street_Address">Street Address</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="paddress" class="form-control" required oninvalid="this.setCustomValidity('Enter Street Address.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="State_Province_County">State / Province / County</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="pState" class="form-control" required oninvalid="this.setCustomValidity('Enter State/Province/County.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Country">Country</span> :</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control country-list" id="pCountry" required oninvalid="this.setCustomValidity('Select your Country location.')" onchange="this.setCustomValidity('')">
+                                            <option value="">-- Select --</option>
+                                            <option value="AF">Afghanistan</option>
+                                            <option value="AX">Åland Islands</option>
+                                            <option value="AL">Albania</option>
+                                            <option value="DZ">Algeria</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="AD">Andorra</option>
+                                            <option value="AO">Angola</option>
+                                            <option value="AI">Anguilla</option>
+                                            <option value="AQ">Antarctica</option>
+                                            <option value="AG">Antigua and Barbuda</option>
+                                            <option value="AR">Argentina</option>
+                                            <option value="AM">Armenia</option>
+                                            <option value="AW">Aruba</option>
+                                            <option value="AU">Australia</option>
+                                            <option value="AT">Austria</option>
+                                            <option value="AZ">Azerbaijan</option>
+                                            <option value="BS">Bahamas</option>
+                                            <option value="BH">Bahrain</option>
+                                            <option value="BD">Bangladesh</option>
+                                            <option value="BB">Barbados</option>
+                                            <option value="BY">Belarus</option>
+                                            <option value="BE">Belgium</option>
+                                            <option value="BZ">Belize</option>
+                                            <option value="BJ">Benin</option>
+                                            <option value="BM">Bermuda</option>
+                                            <option value="BT">Bhutan</option>
+                                            <option value="BO">Bolivia, Plurinational State of</option>
+                                            <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                                            <option value="BA">Bosnia and Herzegovina</option>
+                                            <option value="BW">Botswana</option>
+                                            <option value="BV">Bouvet Island</option>
+                                            <option value="BR">Brazil</option>
+                                            <option value="IO">British Indian Ocean Territory</option>
+                                            <option value="BN">Brunei Darussalam</option>
+                                            <option value="BG">Bulgaria</option>
+                                            <option value="BF">Burkina Faso</option>
+                                            <option value="BI">Burundi</option>
+                                            <option value="KH">Cambodia</option>
+                                            <option value="CM">Cameroon</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="CV">Cape Verde</option>
+                                            <option value="KY">Cayman Islands</option>
+                                            <option value="CF">Central African Republic</option>
+                                            <option value="TD">Chad</option>
+                                            <option value="CL">Chile</option>
+                                            <option value="CN">China</option>
+                                            <option value="CX">Christmas Island</option>
+                                            <option value="CC">Cocos (Keeling) Islands</option>
+                                            <option value="CO">Colombia</option>
+                                            <option value="KM">Comoros</option>
+                                            <option value="CG">Congo</option>
+                                            <option value="CD">Congo, the Democratic Republic of the</option>
+                                            <option value="CK">Cook Islands</option>
+                                            <option value="CR">Costa Rica</option>
+                                            <option value="CI">Côte d'Ivoire</option>
+                                            <option value="HR">Croatia</option>
+                                            <option value="CU">Cuba</option>
+                                            <option value="CW">Curaçao</option>
+                                            <option value="CY">Cyprus</option>
+                                            <option value="CZ">Czech Republic</option>
+                                            <option value="DK">Denmark</option>
+                                            <option value="DJ">Djibouti</option>
+                                            <option value="DM">Dominica</option>
+                                            <option value="DO">Dominican Republic</option>
+                                            <option value="EC">Ecuador</option>
+                                            <option value="EG">Egypt</option>
+                                            <option value="SV">El Salvador</option>
+                                            <option value="GQ">Equatorial Guinea</option>
+                                            <option value="ER">Eritrea</option>
+                                            <option value="EE">Estonia</option>
+                                            <option value="ET">Ethiopia</option>
+                                            <option value="FK">Falkland Islands (Malvinas)</option>
+                                            <option value="FO">Faroe Islands</option>
+                                            <option value="FJ">Fiji</option>
+                                            <option value="FI">Finland</option>
+                                            <option value="FR">France</option>
+                                            <option value="GF">French Guiana</option>
+                                            <option value="PF">French Polynesia</option>
+                                            <option value="TF">French Southern Territories</option>
+                                            <option value="GA">Gabon</option>
+                                            <option value="GM">Gambia</option>
+                                            <option value="GE">Georgia</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="GH">Ghana</option>
+                                            <option value="GI">Gibraltar</option>
+                                            <option value="GR">Greece</option>
+                                            <option value="GL">Greenland</option>
+                                            <option value="GD">Grenada</option>
+                                            <option value="GP">Guadeloupe</option>
+                                            <option value="GU">Guam</option>
+                                            <option value="GT">Guatemala</option>
+                                            <option value="GG">Guernsey</option>
+                                            <option value="GN">Guinea</option>
+                                            <option value="GW">Guinea-Bissau</option>
+                                            <option value="GY">Guyana</option>
+                                            <option value="HT">Haiti</option>
+                                            <option value="HM">Heard Island and McDonald Islands</option>
+                                            <option value="VA">Holy See (Vatican City State)</option>
+                                            <option value="HN">Honduras</option>
+                                            <option value="HK">Hong Kong</option>
+                                            <option value="HU">Hungary</option>
+                                            <option value="IS">Iceland</option>
+                                            <option value="IN">India</option>
+                                            <option value="ID">Indonesia</option>
+                                            <option value="IR">Iran, Islamic Republic of</option>
+                                            <option value="IQ">Iraq</option>
+                                            <option value="IE">Ireland</option>
+                                            <option value="IM">Isle of Man</option>
+                                            <option value="IL">Israel</option>
+                                            <option value="IT">Italy</option>
+                                            <option value="JM">Jamaica</option>
+                                            <option value="JP">Japan</option>
+                                            <option value="JE">Jersey</option>
+                                            <option value="JO">Jordan</option>
+                                            <option value="KZ">Kazakhstan</option>
+                                            <option value="KE">Kenya</option>
+                                            <option value="KI">Kiribati</option>
+                                            <option value="KP">Korea, Democratic People's Republic of</option>
+                                            <option value="KR">Korea, Republic of</option>
+                                            <option value="KW">Kuwait</option>
+                                            <option value="KG">Kyrgyzstan</option>
+                                            <option value="LA">Lao People's Democratic Republic</option>
+                                            <option value="LV">Latvia</option>
+                                            <option value="LB">Lebanon</option>
+                                            <option value="LS">Lesotho</option>
+                                            <option value="LR">Liberia</option>
+                                            <option value="LY">Libya</option>
+                                            <option value="LI">Liechtenstein</option>
+                                            <option value="LT">Lithuania</option>
+                                            <option value="LU">Luxembourg</option>
+                                            <option value="MO">Macao</option>
+                                            <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+                                            <option value="MG">Madagascar</option>
+                                            <option value="MW">Malawi</option>
+                                            <option value="MY">Malaysia</option>
+                                            <option value="MV">Maldives</option>
+                                            <option value="ML">Mali</option>
+                                            <option value="MT">Malta</option>
+                                            <option value="MH">Marshall Islands</option>
+                                            <option value="MQ">Martinique</option>
+                                            <option value="MR">Mauritania</option>
+                                            <option value="MU">Mauritius</option>
+                                            <option value="YT">Mayotte</option>
+                                            <option value="MX">Mexico</option>
+                                            <option value="FM">Micronesia, Federated States of</option>
+                                            <option value="MD">Moldova, Republic of</option>
+                                            <option value="MC">Monaco</option>
+                                            <option value="MN">Mongolia</option>
+                                            <option value="ME">Montenegro</option>
+                                            <option value="MS">Montserrat</option>
+                                            <option value="MA">Morocco</option>
+                                            <option value="MZ">Mozambique</option>
+                                            <option value="MM">Myanmar</option>
+                                            <option value="NA">Namibia</option>
+                                            <option value="NR">Nauru</option>
+                                            <option value="NP">Nepal</option>
+                                            <option value="NL">Netherlands</option>
+                                            <option value="NC">New Caledonia</option>
+                                            <option value="NZ">New Zealand</option>
+                                            <option value="NI">Nicaragua</option>
+                                            <option value="NE">Niger</option>
+                                            <option value="NG">Nigeria</option>
+                                            <option value="NU">Niue</option>
+                                            <option value="NF">Norfolk Island</option>
+                                            <option value="MP">Northern Mariana Islands</option>
+                                            <option value="NO">Norway</option>
+                                            <option value="OM">Oman</option>
+                                            <option value="PK">Pakistan</option>
+                                            <option value="PW">Palau</option>
+                                            <option value="PS">Palestinian Territory, Occupied</option>
+                                            <option value="PA">Panama</option>
+                                            <option value="PG">Papua New Guinea</option>
+                                            <option value="PY">Paraguay</option>
+                                            <option value="PE">Peru</option>
+                                            <option value="PH">Philippines</option>
+                                            <option value="PN">Pitcairn</option>
+                                            <option value="PL">Poland</option>
+                                            <option value="PT">Portugal</option>
+                                            <option value="PR">Puerto Rico</option>
+                                            <option value="QA">Qatar</option>
+                                            <option value="RE">Réunion</option>
+                                            <option value="RO">Romania</option>
+                                            <option value="RU">Russian Federation</option>
+                                            <option value="RW">Rwanda</option>
+                                            <option value="BL">Saint Barthélemy</option>
+                                            <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                                            <option value="KN">Saint Kitts and Nevis</option>
+                                            <option value="LC">Saint Lucia</option>
+                                            <option value="MF">Saint Martin (French part)</option>
+                                            <option value="PM">Saint Pierre and Miquelon</option>
+                                            <option value="VC">Saint Vincent and the Grenadines</option>
+                                            <option value="WS">Samoa</option>
+                                            <option value="SM">San Marino</option>
+                                            <option value="ST">Sao Tome and Principe</option>
+                                            <option value="SA">Saudi Arabia</option>
+                                            <option value="SN">Senegal</option>
+                                            <option value="RS">Serbia</option>
+                                            <option value="SC">Seychelles</option>
+                                            <option value="SL">Sierra Leone</option>
+                                            <option value="SG">Singapore</option>
+                                            <option value="SX">Sint Maarten (Dutch part)</option>
+                                            <option value="SK">Slovakia</option>
+                                            <option value="SI">Slovenia</option>
+                                            <option value="SB">Solomon Islands</option>
+                                            <option value="SO">Somalia</option>
+                                            <option value="ZA">South Africa</option>
+                                            <option value="GS">South Georgia and the South Sandwich Islands</option>
+                                            <option value="SS">South Sudan</option>
+                                            <option value="ES">Spain</option>
+                                            <option value="LK">Sri Lanka</option>
+                                            <option value="SD">Sudan</option>
+                                            <option value="SR">Suriname</option>
+                                            <option value="SJ">Svalbard and Jan Mayen</option>
+                                            <option value="SZ">Swaziland</option>
+                                            <option value="SE">Sweden</option>
+                                            <option value="CH">Switzerland</option>
+                                            <option value="SY">Syrian Arab Republic</option>
+                                            <option value="TW">Taiwan, Province of China</option>
+                                            <option value="TJ">Tajikistan</option>
+                                            <option value="TZ">Tanzania, United Republic of</option>
+                                            <option value="TH">Thailand</option>
+                                            <option value="TL">Timor-Leste</option>
+                                            <option value="TG">Togo</option>
+                                            <option value="TK">Tokelau</option>
+                                            <option value="TO">Tonga</option>
+                                            <option value="TT">Trinidad and Tobago</option>
+                                            <option value="TN">Tunisia</option>
+                                            <option value="TR">Turkey</option>
+                                            <option value="TM">Turkmenistan</option>
+                                            <option value="TC">Turks and Caicos Islands</option>
+                                            <option value="TV">Tuvalu</option>
+                                            <option value="UG">Uganda</option>
+                                            <option value="UA">Ukraine</option>
+                                            <option value="AE">United Arab Emirates</option>
+                                            <option value="GB">United Kingdom</option>
+                                            <option value="US">United States</option>
+                                            <option value="UM">United States Minor Outlying Islands</option>
+                                            <option value="UY">Uruguay</option>
+                                            <option value="UZ">Uzbekistan</option>
+                                            <option value="VU">Vanuatu</option>
+                                            <option value="VE">Venezuela, Bolivarian Republic of</option>
+                                            <option value="VN">Viet Nam</option>
+                                            <option value="VG">Virgin Islands, British</option>
+                                            <option value="VI">Virgin Islands, U.S.</option>
+                                            <option value="WF">Wallis and Futuna</option>
+                                            <option value="EH">Western Sahara</option>
+                                            <option value="YE">Yemen</option>
+                                            <option value="ZM">Zambia</option>
+                                            <option value="ZW">Zimbabwe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Age">Age</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="page" class="form-control" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Date_of_birth">Date of birth</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="date" id="pdob" class="form-control" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group clearfix row">
+                            <div class="col-sm-12">
+                                <label for="usr"><span class="Relation_to_the_patient">Relation to the patient (for example: healthcare professional, parent, caregiver, etc.)</span> </label>
+                                <textarea id="Relation" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <!-- Information about the vaccine(s) -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="Information_VACCINE">Information about the VACCINE(S)</span> <span class="text-danger">(* <span class="Required_Fields">Required Fields</span>)</span>
+                    </div>
+                    <div class="panel-body ">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for="datetime_vacc"><span class="Date_and_time_of_vaccination">Date and time of vaccination</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="datetime-local" id="datetime_vacc" class="form-control" required oninvalid="this.setCustomValidity('Select the Date and Time of Vaccination.')" onchange="this.setCustomValidity('')">
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for="manufac"><span class="Manufacturer">Manufacturer</span> : </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="manufac" class="form-control" required oninvalid="this.setCustomValidity('Enter Manufacturer.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for="manufac"><span class="Manufacturing_Date_Month">Manufacturing Date/ Month</span> : </label>
+                                    <div class="col-sm-8">
+                                        <input type="date" id="manufac_datemonth" class="form-control" required oninvalid="this.setCustomValidity('Select Manufacturing Date/ Month.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for="vaccname"><span class="Vaccine_Name">Vaccine Name</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select name="vacc" id="vaccname" class="form-control" required oninvalid="this.setCustomValidity('Select the Vaccine.')" onchange="this.setCustomValidity('')"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for="batchno"><span class="Batch_number">Batch number</span> : </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="batchno" class="form-control" required oninvalid="this.setCustomValidity('Enter Batch number.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for="batchno"><span class="Expiry_Date_Month">Expiry Date/ Month</span> : </label>
+                                    <div class="col-sm-8">
+                                        <input type="date" id="expiry_datemonth" class="form-control" required oninvalid="this.setCustomValidity('Select Expiry Date/ Month.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Information about vaccine -->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="Information_about_Vaccination">Information about Vaccination</span></div>
+                    <div class="panel-body ">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Route">Route</span> : </label>
+                                    <div class="col-sm-8">
+                                        <!-- <textarea id="routeside_admin" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea> -->
+                                        <select name="route" id="route" class="form-control" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="IM">Intramuscular</option>
+                                            <option value="ID">Intradermal</option>
+                                            <option value="SC">Subcutareous</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Dose_number_vaccine_series">Dose number</span> : </label>
+                                    <div class="col-sm-8">
+                                        <!-- <textarea id="dosenumber" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea> -->
+                                        <select name="dose_number" id="dose_number" class="form-control" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1D">1<sup>st</sup> Dose</option>
+                                            <option value="2D">2<sup>nd</sup> Dose</option>
+                                            <option value="3D">3<sup>rd</sup> Dose</option>
+                                            <option value="4D">4<sup>th</sup> Dose</option>
+                                            <option value="5D">5<sup>th</sup> Dose</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-2" for=""><span class="Site_administration">Site of administration</span> : </label>
+                                    <div class="col-sm-10">
+                                        <textarea id="site_admin" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information about the Facility (or Place) where the vaccine was given/ administered -->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="Information_about_the_Facility_vaccine_administered">Information about the Facility (or Place) where the vaccine was given/ administered</span></div>
+                    <div class="panel-body ">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Facility_clinic_name">Facility/clinic name</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ffacility" class="form-control" required oninvalid="this.setCustomValidity('Enter Facility/clinic name.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Street_Address">Street Address</span> :</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="fstrAddress" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter Street Address.')" onchange="this.setCustomValidity('')"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="State_Province_County">State / Province / County</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="fstate" class="form-control" required oninvalid="this.setCustomValidity('Enter State/Province/County.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Email">Email</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" id="femail" class="form-control" required oninvalid="this.setCustomValidity('Enter Email.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="City">City</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="fcity" class="form-control" required oninvalid="this.setCustomValidity('Enter City.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Country">Country</span> :</label>
+                                    <div class="col-sm-8">
+                                        <select id="fCountry" class="form-control country-list country_admin" required oninvalid="this.setCustomValidity('Select your Country location.')" onchange="this.setCustomValidity('')">
+                                            <option value="">-- Select --</option>
+                                            <option value="AF">Afghanistan</option>
+                                            <option value="AX">Åland Islands</option>
+                                            <option value="AL">Albania</option>
+                                            <option value="DZ">Algeria</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="AD">Andorra</option>
+                                            <option value="AO">Angola</option>
+                                            <option value="AI">Anguilla</option>
+                                            <option value="AQ">Antarctica</option>
+                                            <option value="AG">Antigua and Barbuda</option>
+                                            <option value="AR">Argentina</option>
+                                            <option value="AM">Armenia</option>
+                                            <option value="AW">Aruba</option>
+                                            <option value="AU">Australia</option>
+                                            <option value="AT">Austria</option>
+                                            <option value="AZ">Azerbaijan</option>
+                                            <option value="BS">Bahamas</option>
+                                            <option value="BH">Bahrain</option>
+                                            <option value="BD">Bangladesh</option>
+                                            <option value="BB">Barbados</option>
+                                            <option value="BY">Belarus</option>
+                                            <option value="BE">Belgium</option>
+                                            <option value="BZ">Belize</option>
+                                            <option value="BJ">Benin</option>
+                                            <option value="BM">Bermuda</option>
+                                            <option value="BT">Bhutan</option>
+                                            <option value="BO">Bolivia, Plurinational State of</option>
+                                            <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                                            <option value="BA">Bosnia and Herzegovina</option>
+                                            <option value="BW">Botswana</option>
+                                            <option value="BV">Bouvet Island</option>
+                                            <option value="BR">Brazil</option>
+                                            <option value="IO">British Indian Ocean Territory</option>
+                                            <option value="BN">Brunei Darussalam</option>
+                                            <option value="BG">Bulgaria</option>
+                                            <option value="BF">Burkina Faso</option>
+                                            <option value="BI">Burundi</option>
+                                            <option value="KH">Cambodia</option>
+                                            <option value="CM">Cameroon</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="CV">Cape Verde</option>
+                                            <option value="KY">Cayman Islands</option>
+                                            <option value="CF">Central African Republic</option>
+                                            <option value="TD">Chad</option>
+                                            <option value="CL">Chile</option>
+                                            <option value="CN">China</option>
+                                            <option value="CX">Christmas Island</option>
+                                            <option value="CC">Cocos (Keeling) Islands</option>
+                                            <option value="CO">Colombia</option>
+                                            <option value="KM">Comoros</option>
+                                            <option value="CG">Congo</option>
+                                            <option value="CD">Congo, the Democratic Republic of the</option>
+                                            <option value="CK">Cook Islands</option>
+                                            <option value="CR">Costa Rica</option>
+                                            <option value="CI">Côte d'Ivoire</option>
+                                            <option value="HR">Croatia</option>
+                                            <option value="CU">Cuba</option>
+                                            <option value="CW">Curaçao</option>
+                                            <option value="CY">Cyprus</option>
+                                            <option value="CZ">Czech Republic</option>
+                                            <option value="DK">Denmark</option>
+                                            <option value="DJ">Djibouti</option>
+                                            <option value="DM">Dominica</option>
+                                            <option value="DO">Dominican Republic</option>
+                                            <option value="EC">Ecuador</option>
+                                            <option value="EG">Egypt</option>
+                                            <option value="SV">El Salvador</option>
+                                            <option value="GQ">Equatorial Guinea</option>
+                                            <option value="ER">Eritrea</option>
+                                            <option value="EE">Estonia</option>
+                                            <option value="ET">Ethiopia</option>
+                                            <option value="FK">Falkland Islands (Malvinas)</option>
+                                            <option value="FO">Faroe Islands</option>
+                                            <option value="FJ">Fiji</option>
+                                            <option value="FI">Finland</option>
+                                            <option value="FR">France</option>
+                                            <option value="GF">French Guiana</option>
+                                            <option value="PF">French Polynesia</option>
+                                            <option value="TF">French Southern Territories</option>
+                                            <option value="GA">Gabon</option>
+                                            <option value="GM">Gambia</option>
+                                            <option value="GE">Georgia</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="GH">Ghana</option>
+                                            <option value="GI">Gibraltar</option>
+                                            <option value="GR">Greece</option>
+                                            <option value="GL">Greenland</option>
+                                            <option value="GD">Grenada</option>
+                                            <option value="GP">Guadeloupe</option>
+                                            <option value="GU">Guam</option>
+                                            <option value="GT">Guatemala</option>
+                                            <option value="GG">Guernsey</option>
+                                            <option value="GN">Guinea</option>
+                                            <option value="GW">Guinea-Bissau</option>
+                                            <option value="GY">Guyana</option>
+                                            <option value="HT">Haiti</option>
+                                            <option value="HM">Heard Island and McDonald Islands</option>
+                                            <option value="VA">Holy See (Vatican City State)</option>
+                                            <option value="HN">Honduras</option>
+                                            <option value="HK">Hong Kong</option>
+                                            <option value="HU">Hungary</option>
+                                            <option value="IS">Iceland</option>
+                                            <option value="IN">India</option>
+                                            <option value="ID">Indonesia</option>
+                                            <option value="IR">Iran, Islamic Republic of</option>
+                                            <option value="IQ">Iraq</option>
+                                            <option value="IE">Ireland</option>
+                                            <option value="IM">Isle of Man</option>
+                                            <option value="IL">Israel</option>
+                                            <option value="IT">Italy</option>
+                                            <option value="JM">Jamaica</option>
+                                            <option value="JP">Japan</option>
+                                            <option value="JE">Jersey</option>
+                                            <option value="JO">Jordan</option>
+                                            <option value="KZ">Kazakhstan</option>
+                                            <option value="KE">Kenya</option>
+                                            <option value="KI">Kiribati</option>
+                                            <option value="KP">Korea, Democratic People's Republic of</option>
+                                            <option value="KR">Korea, Republic of</option>
+                                            <option value="KW">Kuwait</option>
+                                            <option value="KG">Kyrgyzstan</option>
+                                            <option value="LA">Lao People's Democratic Republic</option>
+                                            <option value="LV">Latvia</option>
+                                            <option value="LB">Lebanon</option>
+                                            <option value="LS">Lesotho</option>
+                                            <option value="LR">Liberia</option>
+                                            <option value="LY">Libya</option>
+                                            <option value="LI">Liechtenstein</option>
+                                            <option value="LT">Lithuania</option>
+                                            <option value="LU">Luxembourg</option>
+                                            <option value="MO">Macao</option>
+                                            <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+                                            <option value="MG">Madagascar</option>
+                                            <option value="MW">Malawi</option>
+                                            <option value="MY">Malaysia</option>
+                                            <option value="MV">Maldives</option>
+                                            <option value="ML">Mali</option>
+                                            <option value="MT">Malta</option>
+                                            <option value="MH">Marshall Islands</option>
+                                            <option value="MQ">Martinique</option>
+                                            <option value="MR">Mauritania</option>
+                                            <option value="MU">Mauritius</option>
+                                            <option value="YT">Mayotte</option>
+                                            <option value="MX">Mexico</option>
+                                            <option value="FM">Micronesia, Federated States of</option>
+                                            <option value="MD">Moldova, Republic of</option>
+                                            <option value="MC">Monaco</option>
+                                            <option value="MN">Mongolia</option>
+                                            <option value="ME">Montenegro</option>
+                                            <option value="MS">Montserrat</option>
+                                            <option value="MA">Morocco</option>
+                                            <option value="MZ">Mozambique</option>
+                                            <option value="MM">Myanmar</option>
+                                            <option value="NA">Namibia</option>
+                                            <option value="NR">Nauru</option>
+                                            <option value="NP">Nepal</option>
+                                            <option value="NL">Netherlands</option>
+                                            <option value="NC">New Caledonia</option>
+                                            <option value="NZ">New Zealand</option>
+                                            <option value="NI">Nicaragua</option>
+                                            <option value="NE">Niger</option>
+                                            <option value="NG">Nigeria</option>
+                                            <option value="NU">Niue</option>
+                                            <option value="NF">Norfolk Island</option>
+                                            <option value="MP">Northern Mariana Islands</option>
+                                            <option value="NO">Norway</option>
+                                            <option value="OM">Oman</option>
+                                            <option value="PK">Pakistan</option>
+                                            <option value="PW">Palau</option>
+                                            <option value="PS">Palestinian Territory, Occupied</option>
+                                            <option value="PA">Panama</option>
+                                            <option value="PG">Papua New Guinea</option>
+                                            <option value="PY">Paraguay</option>
+                                            <option value="PE">Peru</option>
+                                            <option value="PH">Philippines</option>
+                                            <option value="PN">Pitcairn</option>
+                                            <option value="PL">Poland</option>
+                                            <option value="PT">Portugal</option>
+                                            <option value="PR">Puerto Rico</option>
+                                            <option value="QA">Qatar</option>
+                                            <option value="RE">Réunion</option>
+                                            <option value="RO">Romania</option>
+                                            <option value="RU">Russian Federation</option>
+                                            <option value="RW">Rwanda</option>
+                                            <option value="BL">Saint Barthélemy</option>
+                                            <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                                            <option value="KN">Saint Kitts and Nevis</option>
+                                            <option value="LC">Saint Lucia</option>
+                                            <option value="MF">Saint Martin (French part)</option>
+                                            <option value="PM">Saint Pierre and Miquelon</option>
+                                            <option value="VC">Saint Vincent and the Grenadines</option>
+                                            <option value="WS">Samoa</option>
+                                            <option value="SM">San Marino</option>
+                                            <option value="ST">Sao Tome and Principe</option>
+                                            <option value="SA">Saudi Arabia</option>
+                                            <option value="SN">Senegal</option>
+                                            <option value="RS">Serbia</option>
+                                            <option value="SC">Seychelles</option>
+                                            <option value="SL">Sierra Leone</option>
+                                            <option value="SG">Singapore</option>
+                                            <option value="SX">Sint Maarten (Dutch part)</option>
+                                            <option value="SK">Slovakia</option>
+                                            <option value="SI">Slovenia</option>
+                                            <option value="SB">Solomon Islands</option>
+                                            <option value="SO">Somalia</option>
+                                            <option value="ZA">South Africa</option>
+                                            <option value="GS">South Georgia and the South Sandwich Islands</option>
+                                            <option value="SS">South Sudan</option>
+                                            <option value="ES">Spain</option>
+                                            <option value="LK">Sri Lanka</option>
+                                            <option value="SD">Sudan</option>
+                                            <option value="SR">Suriname</option>
+                                            <option value="SJ">Svalbard and Jan Mayen</option>
+                                            <option value="SZ">Swaziland</option>
+                                            <option value="SE">Sweden</option>
+                                            <option value="CH">Switzerland</option>
+                                            <option value="SY">Syrian Arab Republic</option>
+                                            <option value="TW">Taiwan, Province of China</option>
+                                            <option value="TJ">Tajikistan</option>
+                                            <option value="TZ">Tanzania, United Republic of</option>
+                                            <option value="TH">Thailand</option>
+                                            <option value="TL">Timor-Leste</option>
+                                            <option value="TG">Togo</option>
+                                            <option value="TK">Tokelau</option>
+                                            <option value="TO">Tonga</option>
+                                            <option value="TT">Trinidad and Tobago</option>
+                                            <option value="TN">Tunisia</option>
+                                            <option value="TR">Turkey</option>
+                                            <option value="TM">Turkmenistan</option>
+                                            <option value="TC">Turks and Caicos Islands</option>
+                                            <option value="TV">Tuvalu</option>
+                                            <option value="UG">Uganda</option>
+                                            <option value="UA">Ukraine</option>
+                                            <option value="AE">United Arab Emirates</option>
+                                            <option value="GB">United Kingdom</option>
+                                            <option value="US">United States</option>
+                                            <option value="UM">United States Minor Outlying Islands</option>
+                                            <option value="UY">Uruguay</option>
+                                            <option value="UZ">Uzbekistan</option>
+                                            <option value="VU">Vanuatu</option>
+                                            <option value="VE">Venezuela, Bolivarian Republic of</option>
+                                            <option value="VN">Viet Nam</option>
+                                            <option value="VG">Virgin Islands, British</option>
+                                            <option value="VI">Virgin Islands, U.S.</option>
+                                            <option value="WF">Wallis and Futuna</option>
+                                            <option value="EH">Western Sahara</option>
+                                            <option value="YE">Yemen</option>
+                                            <option value="ZM">Zambia</option>
+                                            <option value="ZW">Zimbabwe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Phone_Including_Country_code">Phone (Including Country code)</span> :</label>
+                                    <div class="col-sm-2">
+                                        <!-- <select name="phCode" id="phCode" class="form-control ph_admin"></select> -->
+                                        <input type="text" id="fphCode" class="form-control ph_admin" disabled />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="fphone" class="form-control" pattern="^((\+91[0-9]{10})|(0[0-9]{10}))$" required oninvalid="this.setCustomValidity('Enter Phone number.')" onchange="this.setCustomValidity('')" onkeypress='validate(event)' />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Fax_number">Fax number</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ffax" class="form-control" required oninvalid="this.setCustomValidity('Enter fax number.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Description of the adverse event, including medical treatment and diagnosis -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="Description_of_the_adverse_event">Description of the adverse event, including medical treatment and diagnosis</span> <span class="text-danger">(* <span class="Required_Fields">Required Fields</span>)</span>
+                    </div>
+                    <div class="panel-body ">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Adverse_Event">Adverse Event/ Symptom/ Complaint after receiving the vaccine</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <!-- <input type="text" id="symptom" maxlength="100" class="form-control" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')" /> -->
+                                        <textarea id="esymptom" rows="3" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Adverse_event_continuing">Adverse event continuing</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="eoptradio" value="yes" onclick="checkRadio(value)"><span class="Yes">Yes</span>
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="eoptradio" value="no" onclick="checkRadio(value)"><span class="No">No</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix endstop">
+                                    <label class="control-label col-sm-4" for=""><span class="Stop_Date">Stop Date</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control" id="estopdate" required oninvalid="this.setCustomValidity('Select Stop Date.')" onchange="this.setCustomValidity('');">
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Doctor_consultation_taken">Doctor's consultation taken</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="eoptradioDCT" value="yes"><span class="Yes">Yes</span>
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="eoptradioDCT" value="no"><span class="No">No</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Treatment_given">Treatment given? If yes, please provide the details</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <textarea id="etreatment" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter Treatment details.')" onchange="this.setCustomValidity('')"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Treatment_given">Upload Treatment File? If yes, please provide the details</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <!-- <textarea id="treatment" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter Treatment details.')" onchange="this.setCustomValidity('')"></textarea> -->
+                                        <input type="file" id="treatmentupload" class="form-control" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Results_of_any_medical_tests">Results of any medical tests and laboratory tests if done</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="eresultMedical" class="form-control" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Results_of_any_medical_tests_upload">Upload Results of any medical tests and laboratory tests if done</span> : </label>
+                                    <div class="col-sm-8">
+                                        <input type="file" id="resultMedicalupload" class="form-control" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Start_Date">Start Date</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control" id="estartdate" required oninvalid="this.setCustomValidity('Select Start Date.')" onchange="this.setCustomValidity('');">
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for="">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Clinic_Hospital_Name">Clinic / Hospital Name</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="eclinic" class="form-control" required oninvalid="this.setCustomValidity('Enter Clinic / Hospital Name.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Doctor_Name">Doctor Name</span> : <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="edocName" class="form-control" required oninvalid="this.setCustomValidity('Enter Doctor Name.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="City">City</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="ecity" class="form-control" required oninvalid="this.setCustomValidity('Enter City.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="State_Province_County">State / Province / County</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="estate" class="form-control" required oninvalid="this.setCustomValidity('Enter State/Province/County.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Country">Country</span> :</label>
+                                    <div class="col-sm-8">
+                                        <select id="eCountry" class="form-control country-list country-list-2" required oninvalid="this.setCustomValidity('Select your Country location.')" onchange="this.setCustomValidity('')">
+                                            <option value="">-- Select --</option>
+                                            <option value="AF">Afghanistan</option>
+                                            <option value="AX">Åland Islands</option>
+                                            <option value="AL">Albania</option>
+                                            <option value="DZ">Algeria</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="AD">Andorra</option>
+                                            <option value="AO">Angola</option>
+                                            <option value="AI">Anguilla</option>
+                                            <option value="AQ">Antarctica</option>
+                                            <option value="AG">Antigua and Barbuda</option>
+                                            <option value="AR">Argentina</option>
+                                            <option value="AM">Armenia</option>
+                                            <option value="AW">Aruba</option>
+                                            <option value="AU">Australia</option>
+                                            <option value="AT">Austria</option>
+                                            <option value="AZ">Azerbaijan</option>
+                                            <option value="BS">Bahamas</option>
+                                            <option value="BH">Bahrain</option>
+                                            <option value="BD">Bangladesh</option>
+                                            <option value="BB">Barbados</option>
+                                            <option value="BY">Belarus</option>
+                                            <option value="BE">Belgium</option>
+                                            <option value="BZ">Belize</option>
+                                            <option value="BJ">Benin</option>
+                                            <option value="BM">Bermuda</option>
+                                            <option value="BT">Bhutan</option>
+                                            <option value="BO">Bolivia, Plurinational State of</option>
+                                            <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                                            <option value="BA">Bosnia and Herzegovina</option>
+                                            <option value="BW">Botswana</option>
+                                            <option value="BV">Bouvet Island</option>
+                                            <option value="BR">Brazil</option>
+                                            <option value="IO">British Indian Ocean Territory</option>
+                                            <option value="BN">Brunei Darussalam</option>
+                                            <option value="BG">Bulgaria</option>
+                                            <option value="BF">Burkina Faso</option>
+                                            <option value="BI">Burundi</option>
+                                            <option value="KH">Cambodia</option>
+                                            <option value="CM">Cameroon</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="CV">Cape Verde</option>
+                                            <option value="KY">Cayman Islands</option>
+                                            <option value="CF">Central African Republic</option>
+                                            <option value="TD">Chad</option>
+                                            <option value="CL">Chile</option>
+                                            <option value="CN">China</option>
+                                            <option value="CX">Christmas Island</option>
+                                            <option value="CC">Cocos (Keeling) Islands</option>
+                                            <option value="CO">Colombia</option>
+                                            <option value="KM">Comoros</option>
+                                            <option value="CG">Congo</option>
+                                            <option value="CD">Congo, the Democratic Republic of the</option>
+                                            <option value="CK">Cook Islands</option>
+                                            <option value="CR">Costa Rica</option>
+                                            <option value="CI">Côte d'Ivoire</option>
+                                            <option value="HR">Croatia</option>
+                                            <option value="CU">Cuba</option>
+                                            <option value="CW">Curaçao</option>
+                                            <option value="CY">Cyprus</option>
+                                            <option value="CZ">Czech Republic</option>
+                                            <option value="DK">Denmark</option>
+                                            <option value="DJ">Djibouti</option>
+                                            <option value="DM">Dominica</option>
+                                            <option value="DO">Dominican Republic</option>
+                                            <option value="EC">Ecuador</option>
+                                            <option value="EG">Egypt</option>
+                                            <option value="SV">El Salvador</option>
+                                            <option value="GQ">Equatorial Guinea</option>
+                                            <option value="ER">Eritrea</option>
+                                            <option value="EE">Estonia</option>
+                                            <option value="ET">Ethiopia</option>
+                                            <option value="FK">Falkland Islands (Malvinas)</option>
+                                            <option value="FO">Faroe Islands</option>
+                                            <option value="FJ">Fiji</option>
+                                            <option value="FI">Finland</option>
+                                            <option value="FR">France</option>
+                                            <option value="GF">French Guiana</option>
+                                            <option value="PF">French Polynesia</option>
+                                            <option value="TF">French Southern Territories</option>
+                                            <option value="GA">Gabon</option>
+                                            <option value="GM">Gambia</option>
+                                            <option value="GE">Georgia</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="GH">Ghana</option>
+                                            <option value="GI">Gibraltar</option>
+                                            <option value="GR">Greece</option>
+                                            <option value="GL">Greenland</option>
+                                            <option value="GD">Grenada</option>
+                                            <option value="GP">Guadeloupe</option>
+                                            <option value="GU">Guam</option>
+                                            <option value="GT">Guatemala</option>
+                                            <option value="GG">Guernsey</option>
+                                            <option value="GN">Guinea</option>
+                                            <option value="GW">Guinea-Bissau</option>
+                                            <option value="GY">Guyana</option>
+                                            <option value="HT">Haiti</option>
+                                            <option value="HM">Heard Island and McDonald Islands</option>
+                                            <option value="VA">Holy See (Vatican City State)</option>
+                                            <option value="HN">Honduras</option>
+                                            <option value="HK">Hong Kong</option>
+                                            <option value="HU">Hungary</option>
+                                            <option value="IS">Iceland</option>
+                                            <option value="IN">India</option>
+                                            <option value="ID">Indonesia</option>
+                                            <option value="IR">Iran, Islamic Republic of</option>
+                                            <option value="IQ">Iraq</option>
+                                            <option value="IE">Ireland</option>
+                                            <option value="IM">Isle of Man</option>
+                                            <option value="IL">Israel</option>
+                                            <option value="IT">Italy</option>
+                                            <option value="JM">Jamaica</option>
+                                            <option value="JP">Japan</option>
+                                            <option value="JE">Jersey</option>
+                                            <option value="JO">Jordan</option>
+                                            <option value="KZ">Kazakhstan</option>
+                                            <option value="KE">Kenya</option>
+                                            <option value="KI">Kiribati</option>
+                                            <option value="KP">Korea, Democratic People's Republic of</option>
+                                            <option value="KR">Korea, Republic of</option>
+                                            <option value="KW">Kuwait</option>
+                                            <option value="KG">Kyrgyzstan</option>
+                                            <option value="LA">Lao People's Democratic Republic</option>
+                                            <option value="LV">Latvia</option>
+                                            <option value="LB">Lebanon</option>
+                                            <option value="LS">Lesotho</option>
+                                            <option value="LR">Liberia</option>
+                                            <option value="LY">Libya</option>
+                                            <option value="LI">Liechtenstein</option>
+                                            <option value="LT">Lithuania</option>
+                                            <option value="LU">Luxembourg</option>
+                                            <option value="MO">Macao</option>
+                                            <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+                                            <option value="MG">Madagascar</option>
+                                            <option value="MW">Malawi</option>
+                                            <option value="MY">Malaysia</option>
+                                            <option value="MV">Maldives</option>
+                                            <option value="ML">Mali</option>
+                                            <option value="MT">Malta</option>
+                                            <option value="MH">Marshall Islands</option>
+                                            <option value="MQ">Martinique</option>
+                                            <option value="MR">Mauritania</option>
+                                            <option value="MU">Mauritius</option>
+                                            <option value="YT">Mayotte</option>
+                                            <option value="MX">Mexico</option>
+                                            <option value="FM">Micronesia, Federated States of</option>
+                                            <option value="MD">Moldova, Republic of</option>
+                                            <option value="MC">Monaco</option>
+                                            <option value="MN">Mongolia</option>
+                                            <option value="ME">Montenegro</option>
+                                            <option value="MS">Montserrat</option>
+                                            <option value="MA">Morocco</option>
+                                            <option value="MZ">Mozambique</option>
+                                            <option value="MM">Myanmar</option>
+                                            <option value="NA">Namibia</option>
+                                            <option value="NR">Nauru</option>
+                                            <option value="NP">Nepal</option>
+                                            <option value="NL">Netherlands</option>
+                                            <option value="NC">New Caledonia</option>
+                                            <option value="NZ">New Zealand</option>
+                                            <option value="NI">Nicaragua</option>
+                                            <option value="NE">Niger</option>
+                                            <option value="NG">Nigeria</option>
+                                            <option value="NU">Niue</option>
+                                            <option value="NF">Norfolk Island</option>
+                                            <option value="MP">Northern Mariana Islands</option>
+                                            <option value="NO">Norway</option>
+                                            <option value="OM">Oman</option>
+                                            <option value="PK">Pakistan</option>
+                                            <option value="PW">Palau</option>
+                                            <option value="PS">Palestinian Territory, Occupied</option>
+                                            <option value="PA">Panama</option>
+                                            <option value="PG">Papua New Guinea</option>
+                                            <option value="PY">Paraguay</option>
+                                            <option value="PE">Peru</option>
+                                            <option value="PH">Philippines</option>
+                                            <option value="PN">Pitcairn</option>
+                                            <option value="PL">Poland</option>
+                                            <option value="PT">Portugal</option>
+                                            <option value="PR">Puerto Rico</option>
+                                            <option value="QA">Qatar</option>
+                                            <option value="RE">Réunion</option>
+                                            <option value="RO">Romania</option>
+                                            <option value="RU">Russian Federation</option>
+                                            <option value="RW">Rwanda</option>
+                                            <option value="BL">Saint Barthélemy</option>
+                                            <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                                            <option value="KN">Saint Kitts and Nevis</option>
+                                            <option value="LC">Saint Lucia</option>
+                                            <option value="MF">Saint Martin (French part)</option>
+                                            <option value="PM">Saint Pierre and Miquelon</option>
+                                            <option value="VC">Saint Vincent and the Grenadines</option>
+                                            <option value="WS">Samoa</option>
+                                            <option value="SM">San Marino</option>
+                                            <option value="ST">Sao Tome and Principe</option>
+                                            <option value="SA">Saudi Arabia</option>
+                                            <option value="SN">Senegal</option>
+                                            <option value="RS">Serbia</option>
+                                            <option value="SC">Seychelles</option>
+                                            <option value="SL">Sierra Leone</option>
+                                            <option value="SG">Singapore</option>
+                                            <option value="SX">Sint Maarten (Dutch part)</option>
+                                            <option value="SK">Slovakia</option>
+                                            <option value="SI">Slovenia</option>
+                                            <option value="SB">Solomon Islands</option>
+                                            <option value="SO">Somalia</option>
+                                            <option value="ZA">South Africa</option>
+                                            <option value="GS">South Georgia and the South Sandwich Islands</option>
+                                            <option value="SS">South Sudan</option>
+                                            <option value="ES">Spain</option>
+                                            <option value="LK">Sri Lanka</option>
+                                            <option value="SD">Sudan</option>
+                                            <option value="SR">Suriname</option>
+                                            <option value="SJ">Svalbard and Jan Mayen</option>
+                                            <option value="SZ">Swaziland</option>
+                                            <option value="SE">Sweden</option>
+                                            <option value="CH">Switzerland</option>
+                                            <option value="SY">Syrian Arab Republic</option>
+                                            <option value="TW">Taiwan, Province of China</option>
+                                            <option value="TJ">Tajikistan</option>
+                                            <option value="TZ">Tanzania, United Republic of</option>
+                                            <option value="TH">Thailand</option>
+                                            <option value="TL">Timor-Leste</option>
+                                            <option value="TG">Togo</option>
+                                            <option value="TK">Tokelau</option>
+                                            <option value="TO">Tonga</option>
+                                            <option value="TT">Trinidad and Tobago</option>
+                                            <option value="TN">Tunisia</option>
+                                            <option value="TR">Turkey</option>
+                                            <option value="TM">Turkmenistan</option>
+                                            <option value="TC">Turks and Caicos Islands</option>
+                                            <option value="TV">Tuvalu</option>
+                                            <option value="UG">Uganda</option>
+                                            <option value="UA">Ukraine</option>
+                                            <option value="AE">United Arab Emirates</option>
+                                            <option value="GB">United Kingdom</option>
+                                            <option value="US">United States</option>
+                                            <option value="UM">United States Minor Outlying Islands</option>
+                                            <option value="UY">Uruguay</option>
+                                            <option value="UZ">Uzbekistan</option>
+                                            <option value="VU">Vanuatu</option>
+                                            <option value="VE">Venezuela, Bolivarian Republic of</option>
+                                            <option value="VN">Viet Nam</option>
+                                            <option value="VG">Virgin Islands, British</option>
+                                            <option value="VI">Virgin Islands, U.S.</option>
+                                            <option value="WF">Wallis and Futuna</option>
+                                            <option value="EH">Western Sahara</option>
+                                            <option value="YE">Yemen</option>
+                                            <option value="ZM">Zambia</option>
+                                            <option value="ZW">Zimbabwe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Phone_Including_Country_code">Phone (Including Country code)</span> :</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" id="ephCode_other" class="form-control" disabled />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="tel" id="ephone" class="form-control" pattern="^((\+91[0-9]{10})|(0[0-9]{10}))$" maxlength="10" required oninvalid="this.setCustomValidity('Enter Phone (Including Country code).')" onchange="this.setCustomValidity('')" onkeypress='validate(event)' />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Email">Email</span> :</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="eemails" class="form-control" required oninvalid="this.setCustomValidity('Enter Email.')" onchange="this.setCustomValidity('')" />
+                                    </div>
+                                </div>
+                                @*<div class="form-group clearfix">
+                                        <label class="control-label col-sm-4" for=""><span class="Doctor_Registration_Number">Doctor's Registration Number</span> : <span class="text-danger Doctor_Registration_Number_star">*</span></label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="docRegNo" class="form-control" required oninvalid="this.setCustomValidity('Enter Doctor Registration Number.')" onchange="this.setCustomValidity('')" />
+                                        </div>
+                                    </div>*@
+                                <div class="form-group clearfix">
+                                    <label class="control-label col-sm-4" for=""><span class="Street_Address">Street Address</span> :</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="estrAddress" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter Street Address.')" onchange="this.setCustomValidity('')"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Relevant Medical History of the Person -->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="Relevant_Medical">Relevant Medical History of the Person</span></div>
+                    <div class="panel-body ">
+                        <div class="form-group clearfix row">
+                            <div class="col-sm-12">
+                                <label for="usr"><span class="Was_the_patient">Was the patient pregnant at the time of vaccination?</span></label>
+                                <select name="pregnantVacc" id="pregnantVacc" class="form-control">
+                                    <option value="yes"><span class="Yes">Yes</span></option>
+                                    <option value="no"><span class="No">No</span></option>
+                                    <option value="na"><span class="Not_applicable">Not Applicable</span></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix row">
+                            <div class="col-sm-12">
+                                <label for="usr"><span class="Allergies_to_medications">Intake of any medications at the time of vaccination. If yes, details to be provided</span></label>
+                                <textarea id="medications" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix row">
+                            <div class="col-sm-12">
+                                <label for="usr"><span class="Intake_of_any_medications">Allergies to medications, food, or other products. If yes, details to be provided</span></label>
+                                <textarea id="Allergies" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix row">
+                            <div class="col-sm-12">
+                                <label for="usr"><span class="Other_illnesses_at_the_time">Other illnesses at the time of vaccination (and up to one month prior)</span> </label>
+                                <textarea id="illnesses" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix row">
+                            <div class="col-sm-12">
+                                <label for="usr"><span class="Chronic">Chronic or long-standing health conditions</span> </label>
+                                <textarea id="Chronic" rows="5" maxlength="300" class="form-control textarea" required oninvalid="this.setCustomValidity('Enter details.')" onchange="this.setCustomValidity('')"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-8 col-sm-4 text-right">
+                        <button type="reset" class="btn btn-warning float-right ResetForm"><span class="Reset">Reset</span></button>
+                        <button type="submit" class="btn btn-success btn-submit float-right"><span class="Submit">Submit</span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/data/en.js"></script>
+    <script src="~/data/hi.js"></script>
+    <script src="~/data/country.js"></script>
+    <script src="~/data/Phone.js"></script>
+    <script src="~/data/products.js"></script>
+    @*<script src="~/Uploadify/jquery-1.3.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/Uploadify/jquery.uploadify.js"></script>*@
+
+    <script src="~/Scripts/existing_user.js"></script>
+}
+

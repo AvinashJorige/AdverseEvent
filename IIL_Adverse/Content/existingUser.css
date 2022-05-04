@@ -1,0 +1,75 @@
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-light {
+    font-weight: 400;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+.panel-heading {
+    font-weight: bold;
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+.panel-heading {
+    background: linear-gradient(90deg, #00a0e3 0%, #522e90 65%, #13698b 100%);
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 17px;
+}
+.btn-submit {
+    background: #00a0e3;
+    color: #fff;
+}
+
+
+
+.accordion {
+    color: #444;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .accordion:after {
+        content: '\002B';
+        color: #fff;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+.active:after {
+    content: "\2212";
+}
+
+.panelbody {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+.form-group {
+    margin-bottom: 15px;
+    padding-top: 10px;
+}

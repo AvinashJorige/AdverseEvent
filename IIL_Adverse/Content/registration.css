@@ -1,0 +1,33 @@
+
+.text-bold {
+    font-weight: bold;
+}
+
+.stAddress {
+    resize: vertical;
+    max-height: 200px;
+    min-height: 100px;
+}
+
+
+.age {
+    line-height: 2.4em;
+}
+
+.form-horizontal {
+    margin: 12px 0 0 0;
+}
+.panel-heading {
+    background: linear-gradient(90deg, #00a0e3 0%, #522e90 65%, #13698b 100%);
+    color:#fff !important;
+    font-weight:bold;
+    font-size:17px;
+}
+.control-label {
+    text-align: end;
+}
+
+.btn-submit {
+    background: #00a0e3;
+    color:#fff;
+}
